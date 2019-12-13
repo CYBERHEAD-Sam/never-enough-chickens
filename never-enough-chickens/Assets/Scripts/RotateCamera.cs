@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class RotateCamera : MonoBehaviour
 {
-    public GameObject player;
-    private Vector3 offset = new Vector3(0, 25, 0);
+    public float rotationSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +14,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + offset;
+        float horizontalInput = Input.GetAxis("Horizontal");
+        transform.Rotate(Vector3.up, horizontalInput * rotationSpeed * Time.deltaTime);
     }
 }
